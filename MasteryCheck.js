@@ -6,8 +6,13 @@ setInterval(() => {
 
   let alertVisible = document.getElementById('masteryAlert');
   
-  if (!alertVisible && (enoughWind || enoughPoison)) {
+  let wantAlert = !alertVisible && (enoughWind || enoughPoison);
+  
+  if (wantAlert) {
     let alert = '<span id="masteryAlert" class="alert badge">!</span>';
     document.getElementById('natureA').insertAdjacentHTML('afterbegin', alert);
+  }
+  else if (alertVisible) {
+    alertVisible.remove();
   }
 }, 1000 * 60)
